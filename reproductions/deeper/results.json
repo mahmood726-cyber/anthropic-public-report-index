@@ -1,0 +1,1372 @@
+{
+  "date": "2026-10-28",
+  "binary_provenance": {
+    "package": "@anthropic-ai/claude-code-win32-x64",
+    "version": "2.1.312",
+    "tarball": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-x64/-/claude-code-win32-x64-2.1.312.tgz",
+    "integrity": "sha512-jBLEkokpUu+Ut0U8ZfSDudQ6m36suAqqvZat8SEYcW1KrU41i/ajeQVcqydBogpH82a0GVSJrbFkhdnmRE+32w==",
+    "integrity_verified": true,
+    "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+    "binary_bytes": 298690208
+  },
+  "mode": "Windows 2.1.312, bare print mode, isolated profile, local deterministic API/MCP fixtures",
+  "confirmed_existing_reports": [
+    72957,
+    105138
+  ],
+  "new_independent_bug_count": 0,
+  "unicode_mcp": {
+    "fixture_env_overrides": {
+      "MAX_MCP_OUTPUT_TOKENS": null
+    },
+    "case": "argument_controls",
+    "binary_label": "deeper-unicode-mcp-utf8",
+    "exit_code": 0,
+    "timeout": false,
+    "elapsed_seconds": 1.735,
+    "api_requests": 2,
+    "fixture_tool_calls": 10,
+    "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.13",
+    "transport": "loopback fixture API, not a production model",
+    "stdout_sha256": "32bfb717fd8f3f38c7ac7cfb4a93b9b296ec30c24a63ab867aa0b3a29b1a4cb7",
+    "probes": [
+      {
+        "probe": "ascii",
+        "supplied_codepoints": [
+          120,
+          65,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          65,
+          121
+        ],
+        "preserved": true
+      },
+      {
+        "probe": "literal_one_slash",
+        "supplied_codepoints": [
+          120,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          65,
+          121
+        ],
+        "preserved": false
+      },
+      {
+        "probe": "literal_two_slashes",
+        "supplied_codepoints": [
+          120,
+          92,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          92,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121
+        ],
+        "preserved": true
+      },
+      {
+        "probe": "actual_character",
+        "supplied_codepoints": [
+          120,
+          233,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          233,
+          121
+        ],
+        "preserved": true
+      },
+      {
+        "probe": "invalid_hex",
+        "supplied_codepoints": [
+          120,
+          92,
+          117,
+          90,
+          90,
+          90,
+          90,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          92,
+          117,
+          90,
+          90,
+          90,
+          90,
+          121
+        ],
+        "preserved": true
+      },
+      {
+        "probe": "nonunicode_escape",
+        "supplied_codepoints": [
+          120,
+          92,
+          110,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          92,
+          110,
+          121
+        ],
+        "preserved": true
+      },
+      {
+        "probe": "windows_path_guard",
+        "supplied_codepoints": [
+          120,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121,
+          32,
+          67,
+          58,
+          92,
+          102,
+          105,
+          120,
+          116,
+          117,
+          114,
+          101,
+          92,
+          100,
+          117,
+          109,
+          109,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121,
+          32,
+          67,
+          58,
+          92,
+          102,
+          105,
+          120,
+          116,
+          117,
+          114,
+          101,
+          92,
+          100,
+          117,
+          109,
+          109,
+          121
+        ],
+        "preserved": true
+      },
+      {
+        "probe": "line_separator",
+        "supplied_codepoints": [
+          120,
+          92,
+          117,
+          50,
+          48,
+          50,
+          56,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          8232,
+          121
+        ],
+        "preserved": false
+      },
+      {
+        "probe": "escaped_backslash",
+        "supplied_codepoints": [
+          120,
+          92,
+          117,
+          48,
+          48,
+          53,
+          99,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121
+        ],
+        "preserved": false
+      },
+      {
+        "probe": "surrogate_pair",
+        "supplied_codepoints": [
+          120,
+          92,
+          117,
+          100,
+          56,
+          51,
+          100,
+          92,
+          117,
+          100,
+          101,
+          48,
+          48,
+          121
+        ],
+        "received_codepoints": [
+          120,
+          128512,
+          121
+        ],
+        "preserved": false
+      }
+    ],
+    "received_probe_count": 10,
+    "rewritten_count": 4
+  },
+  "source_semantics": {
+    "fixture_env_overrides": {
+      "MAX_MCP_OUTPUT_TOKENS": null
+    },
+    "case": "raw_string_fixture",
+    "binary_label": "deeper-code-semantics",
+    "exit_code": 0,
+    "timeout": false,
+    "elapsed_seconds": 3.973,
+    "api_requests": 3,
+    "fixture_tool_calls": 6,
+    "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.13.13",
+    "transport": "loopback fixture API, not a production model",
+    "stdout_sha256": "c6b4dbcbf18d2cce1bdb01a8e12356f83bad464b94e10b183ac7633c3f44cd31",
+    "probes": [
+      {
+        "probe": "literal",
+        "supplied_source": "sample = r\"x\\u0041y\"\n",
+        "written_source": "sample = r\"xAy\"\n",
+        "supplied_value_codepoints": [
+          120,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121
+        ],
+        "written_value_codepoints": [
+          120,
+          65,
+          121
+        ],
+        "semantic_value_preserved": false,
+        "evaluation": "AST parsing and literal evaluation only; generated code was not executed"
+      },
+      {
+        "probe": "with_path_comment",
+        "supplied_source": "sample = r\"x\\u0041y\"\n# Q:\\fixture\\dummy\n",
+        "written_source": "sample = r\"x\\u0041y\"\n# Q:\\fixture\\dummy\n",
+        "supplied_value_codepoints": [
+          120,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121
+        ],
+        "written_value_codepoints": [
+          120,
+          92,
+          117,
+          48,
+          48,
+          52,
+          49,
+          121
+        ],
+        "semantic_value_preserved": true,
+        "evaluation": "AST parsing and literal evaluation only; generated code was not executed"
+      },
+      {
+        "probe": "ordinary",
+        "supplied_source": "sample = \"xAy\"\n",
+        "written_source": "sample = \"xAy\"\n",
+        "supplied_value_codepoints": [
+          120,
+          65,
+          121
+        ],
+        "written_value_codepoints": [
+          120,
+          65,
+          121
+        ],
+        "semantic_value_preserved": true,
+        "evaluation": "AST parsing and literal evaluation only; generated code was not executed"
+      }
+    ]
+  },
+  "mcp_storage_trials": {
+    "low_count_60000": {
+      "fixture_env_overrides": {
+        "MAX_MCP_OUTPUT_TOKENS": null
+      },
+      "case": "mcp_20_2",
+      "binary_label": "deeper-default-burst",
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 5.544,
+      "api_requests": 2,
+      "fixture_tool_calls": 20,
+      "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.13.13",
+      "transport": "loopback fixture API, not a production model",
+      "stdout_sha256": "cddb82681ca91db328b86062e809d59be495be265bf0a5c0edb234cb4d3d1027",
+      "mcp_calls": 20,
+      "saved_files": 20,
+      "tools_offered": [
+        "mcp__big__big"
+      ],
+      "associations": [
+        {
+          "tool_use_id": "toolu_fixture_2",
+          "expected_tag": "CANARY_01",
+          "returned_file": "toolu_fixture_2.json",
+          "file_tag": "CANARY_01",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_3",
+          "expected_tag": "CANARY_02",
+          "returned_file": "toolu_fixture_3.json",
+          "file_tag": "CANARY_02",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_6",
+          "expected_tag": "CANARY_05",
+          "returned_file": "toolu_fixture_6.json",
+          "file_tag": "CANARY_05",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_1",
+          "expected_tag": "CANARY_00",
+          "returned_file": "toolu_fixture_1.json",
+          "file_tag": "CANARY_00",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_17",
+          "expected_tag": "CANARY_16",
+          "returned_file": "toolu_fixture_17.json",
+          "file_tag": "CANARY_16",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_16",
+          "expected_tag": "CANARY_15",
+          "returned_file": "toolu_fixture_16.json",
+          "file_tag": "CANARY_15",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_4",
+          "expected_tag": "CANARY_03",
+          "returned_file": "toolu_fixture_4.json",
+          "file_tag": "CANARY_03",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_5",
+          "expected_tag": "CANARY_04",
+          "returned_file": "toolu_fixture_5.json",
+          "file_tag": "CANARY_04",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_8",
+          "expected_tag": "CANARY_07",
+          "returned_file": "toolu_fixture_8.json",
+          "file_tag": "CANARY_07",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_11",
+          "expected_tag": "CANARY_10",
+          "returned_file": "toolu_fixture_11.json",
+          "file_tag": "CANARY_10",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_19",
+          "expected_tag": "CANARY_18",
+          "returned_file": "toolu_fixture_19.json",
+          "file_tag": "CANARY_18",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_9",
+          "expected_tag": "CANARY_08",
+          "returned_file": "toolu_fixture_9.json",
+          "file_tag": "CANARY_08",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_12",
+          "expected_tag": "CANARY_11",
+          "returned_file": "toolu_fixture_12.json",
+          "file_tag": "CANARY_11",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_10",
+          "expected_tag": "CANARY_09",
+          "returned_file": "toolu_fixture_10.json",
+          "file_tag": "CANARY_09",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_7",
+          "expected_tag": "CANARY_06",
+          "returned_file": "toolu_fixture_7.json",
+          "file_tag": "CANARY_06",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_14",
+          "expected_tag": "CANARY_13",
+          "returned_file": "toolu_fixture_14.json",
+          "file_tag": "CANARY_13",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_18",
+          "expected_tag": "CANARY_17",
+          "returned_file": "toolu_fixture_18.json",
+          "file_tag": "CANARY_17",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_13",
+          "expected_tag": "CANARY_12",
+          "returned_file": "toolu_fixture_13.json",
+          "file_tag": "CANARY_12",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_20",
+          "expected_tag": "CANARY_19",
+          "returned_file": "toolu_fixture_20.json",
+          "file_tag": "CANARY_19",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_15",
+          "expected_tag": "CANARY_14",
+          "returned_file": "toolu_fixture_15.json",
+          "file_tag": "CANARY_14",
+          "correct_association": true
+        }
+      ],
+      "association_mismatches": 0,
+      "unresolved_associations": 0,
+      "complete_association_coverage": true,
+      "analysis_note": "Windows extended-length paths used for file enumeration; missing files are unknown, not classified as a substitution.",
+      "payload_filler_chars": 60000,
+      "configured_spacing_ms": 0,
+      "payload_config_source": "deeper-default-burst_mcp_20_2_mcp.json"
+    },
+    "low_count_120000": {
+      "fixture_env_overrides": {
+        "MAX_MCP_OUTPUT_TOKENS": null
+      },
+      "case": "mcp_20_1",
+      "binary_label": "deeper-default-large",
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 4.457,
+      "api_requests": 2,
+      "fixture_tool_calls": 20,
+      "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.13.13",
+      "transport": "loopback fixture API, not a production model",
+      "stdout_sha256": "2e2cb6c7909decb12f9a429bbec33edfb508e31bc286570d4ca1c7508557c268",
+      "mcp_calls": 20,
+      "saved_files": 20,
+      "tools_offered": [
+        "mcp__big__big"
+      ],
+      "associations": [
+        {
+          "tool_use_id": "toolu_fixture_3",
+          "expected_tag": "CANARY_02",
+          "returned_file": "toolu_fixture_3.json",
+          "file_tag": "CANARY_02",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_2",
+          "expected_tag": "CANARY_01",
+          "returned_file": "toolu_fixture_2.json",
+          "file_tag": "CANARY_01",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_1",
+          "expected_tag": "CANARY_00",
+          "returned_file": "toolu_fixture_1.json",
+          "file_tag": "CANARY_00",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_5",
+          "expected_tag": "CANARY_04",
+          "returned_file": "toolu_fixture_5.json",
+          "file_tag": "CANARY_04",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_6",
+          "expected_tag": "CANARY_05",
+          "returned_file": "toolu_fixture_6.json",
+          "file_tag": "CANARY_05",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_8",
+          "expected_tag": "CANARY_07",
+          "returned_file": "toolu_fixture_8.json",
+          "file_tag": "CANARY_07",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_4",
+          "expected_tag": "CANARY_03",
+          "returned_file": "toolu_fixture_4.json",
+          "file_tag": "CANARY_03",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_7",
+          "expected_tag": "CANARY_06",
+          "returned_file": "toolu_fixture_7.json",
+          "file_tag": "CANARY_06",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_9",
+          "expected_tag": "CANARY_08",
+          "returned_file": "toolu_fixture_9.json",
+          "file_tag": "CANARY_08",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_15",
+          "expected_tag": "CANARY_14",
+          "returned_file": "toolu_fixture_15.json",
+          "file_tag": "CANARY_14",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_11",
+          "expected_tag": "CANARY_10",
+          "returned_file": "toolu_fixture_11.json",
+          "file_tag": "CANARY_10",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_19",
+          "expected_tag": "CANARY_18",
+          "returned_file": "toolu_fixture_19.json",
+          "file_tag": "CANARY_18",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_16",
+          "expected_tag": "CANARY_15",
+          "returned_file": "toolu_fixture_16.json",
+          "file_tag": "CANARY_15",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_14",
+          "expected_tag": "CANARY_13",
+          "returned_file": "toolu_fixture_14.json",
+          "file_tag": "CANARY_13",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_10",
+          "expected_tag": "CANARY_09",
+          "returned_file": "toolu_fixture_10.json",
+          "file_tag": "CANARY_09",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_20",
+          "expected_tag": "CANARY_19",
+          "returned_file": "toolu_fixture_20.json",
+          "file_tag": "CANARY_19",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_18",
+          "expected_tag": "CANARY_17",
+          "returned_file": "toolu_fixture_18.json",
+          "file_tag": "CANARY_17",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_12",
+          "expected_tag": "CANARY_11",
+          "returned_file": "toolu_fixture_12.json",
+          "file_tag": "CANARY_11",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_13",
+          "expected_tag": "CANARY_12",
+          "returned_file": "toolu_fixture_13.json",
+          "file_tag": "CANARY_12",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_17",
+          "expected_tag": "CANARY_16",
+          "returned_file": "toolu_fixture_17.json",
+          "file_tag": "CANARY_16",
+          "correct_association": true
+        }
+      ],
+      "association_mismatches": 0,
+      "unresolved_associations": 0,
+      "complete_association_coverage": true,
+      "analysis_note": "Windows extended-length paths used for file enumeration; missing files are unknown, not classified as a substitution.",
+      "payload_filler_chars": 120000,
+      "configured_spacing_ms": 0,
+      "payload_config_source": "deeper-default-large_mcp_20_1_mcp.json"
+    },
+    "no_count_fastpath_600000": {
+      "count_tokens_requests": 0,
+      "fixture_count_tokens_response": 10,
+      "fixture_env_overrides": {
+        "MAX_MCP_OUTPUT_TOKENS": null
+      },
+      "case": "mcp_10_1",
+      "binary_label": "deeper-default-fastpath",
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 3.505,
+      "api_requests": 2,
+      "fixture_tool_calls": 10,
+      "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.13.13",
+      "transport": "loopback fixture API, not a production model",
+      "stdout_sha256": "68d3448761c154db1dea847e09a375edd4988d3422cae4265935aca1bf5a489a",
+      "mcp_calls": 10,
+      "saved_files": 10,
+      "tools_offered": [
+        "mcp__big__big"
+      ],
+      "associations": [
+        {
+          "tool_use_id": "toolu_fixture_2",
+          "expected_tag": "CANARY_01",
+          "returned_file": "mcp-big-big-1793202576213.txt",
+          "file_tag": "CANARY_01",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_8",
+          "expected_tag": "CANARY_07",
+          "returned_file": "mcp-big-big-1793202576233.txt",
+          "file_tag": "CANARY_07",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_1",
+          "expected_tag": "CANARY_00",
+          "returned_file": "mcp-big-big-1793202576210.txt",
+          "file_tag": "CANARY_00",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_4",
+          "expected_tag": "CANARY_03",
+          "returned_file": "mcp-big-big-1793202576221.txt",
+          "file_tag": "CANARY_03",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_6",
+          "expected_tag": "CANARY_05",
+          "returned_file": "mcp-big-big-1793202576227.txt",
+          "file_tag": "CANARY_05",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_9",
+          "expected_tag": "CANARY_08",
+          "returned_file": "mcp-big-big-1793202576236.txt",
+          "file_tag": "CANARY_08",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_5",
+          "expected_tag": "CANARY_04",
+          "returned_file": "mcp-big-big-1793202576224.txt",
+          "file_tag": "CANARY_04",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_10",
+          "expected_tag": "CANARY_09",
+          "returned_file": "mcp-big-big-1793202576239.txt",
+          "file_tag": "CANARY_09",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_7",
+          "expected_tag": "CANARY_06",
+          "returned_file": "mcp-big-big-1793202576230.txt",
+          "file_tag": "CANARY_06",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_3",
+          "expected_tag": "CANARY_02",
+          "returned_file": "mcp-big-big-1793202576217.txt",
+          "file_tag": "CANARY_02",
+          "correct_association": true
+        }
+      ],
+      "association_mismatches": 0,
+      "unresolved_associations": 0,
+      "complete_association_coverage": true,
+      "analysis_note": "Windows extended-length paths used for file enumeration; missing files are unknown, not classified as a substitution.",
+      "payload_filler_chars": 600000,
+      "configured_spacing_ms": 0,
+      "payload_config_source": "deeper-default-fastpath_mcp_10_1_mcp.json"
+    },
+    "over_limit_count_burst": {
+      "count_tokens_requests": 20,
+      "fixture_count_tokens_response": 30000,
+      "fixture_env_overrides": {
+        "MAX_MCP_OUTPUT_TOKENS": null
+      },
+      "case": "mcp_20_1",
+      "binary_label": "deeper-count-intervention",
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 2.55,
+      "api_requests": 2,
+      "fixture_tool_calls": 20,
+      "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.13.13",
+      "transport": "loopback fixture API, not a production model",
+      "stdout_sha256": "c27103b63407bf1d92ca44eca22b79acb5a971108acd68d9564ae1cd036ed27e",
+      "mcp_calls": 20,
+      "saved_files": 16,
+      "tools_offered": [
+        "mcp__big__big"
+      ],
+      "associations": [
+        {
+          "tool_use_id": "toolu_fixture_3",
+          "expected_tag": "CANARY_02",
+          "returned_file": "mcp-big-big-1793202707779.txt",
+          "file_tag": "CANARY_02",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_1",
+          "expected_tag": "CANARY_00",
+          "returned_file": "mcp-big-big-1793202707780.txt",
+          "file_tag": "CANARY_00",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_2",
+          "expected_tag": "CANARY_01",
+          "returned_file": "mcp-big-big-1793202707780.txt",
+          "file_tag": "CANARY_00",
+          "correct_association": false
+        },
+        {
+          "tool_use_id": "toolu_fixture_4",
+          "expected_tag": "CANARY_03",
+          "returned_file": "mcp-big-big-1793202707781.txt",
+          "file_tag": "CANARY_03",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_5",
+          "expected_tag": "CANARY_04",
+          "returned_file": "mcp-big-big-1793202707782.txt",
+          "file_tag": "CANARY_04",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_6",
+          "expected_tag": "CANARY_05",
+          "returned_file": "mcp-big-big-1793202707784.txt",
+          "file_tag": "CANARY_05",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_8",
+          "expected_tag": "CANARY_07",
+          "returned_file": "mcp-big-big-1793202707786.txt",
+          "file_tag": "CANARY_07",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_7",
+          "expected_tag": "CANARY_06",
+          "returned_file": "mcp-big-big-1793202707785.txt",
+          "file_tag": "CANARY_06",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_14",
+          "expected_tag": "CANARY_13",
+          "returned_file": "mcp-big-big-1793202708181.txt",
+          "file_tag": "CANARY_13",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_16",
+          "expected_tag": "CANARY_15",
+          "returned_file": "mcp-big-big-1793202708193.txt",
+          "file_tag": "CANARY_15",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_15",
+          "expected_tag": "CANARY_14",
+          "returned_file": "mcp-big-big-1793202708197.txt",
+          "file_tag": "CANARY_14",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_17",
+          "expected_tag": "CANARY_16",
+          "returned_file": "mcp-big-big-1793202708198.txt",
+          "file_tag": "CANARY_16",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_12",
+          "expected_tag": "CANARY_11",
+          "returned_file": "mcp-big-big-1793202708217.txt",
+          "file_tag": "CANARY_11",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_19",
+          "expected_tag": "CANARY_18",
+          "returned_file": "mcp-big-big-1793202708220.txt",
+          "file_tag": "CANARY_18",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_18",
+          "expected_tag": "CANARY_17",
+          "returned_file": "mcp-big-big-1793202708241.txt",
+          "file_tag": "CANARY_17",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_11",
+          "expected_tag": "CANARY_10",
+          "returned_file": "mcp-big-big-1793202708264.txt",
+          "file_tag": "CANARY_10",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_10",
+          "expected_tag": "CANARY_09",
+          "returned_file": "mcp-big-big-1793202708318.txt",
+          "file_tag": "CANARY_09",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_9",
+          "expected_tag": "CANARY_08",
+          "returned_file": "mcp-big-big-1793202708318.txt",
+          "file_tag": "CANARY_09",
+          "correct_association": false
+        },
+        {
+          "tool_use_id": "toolu_fixture_13",
+          "expected_tag": "CANARY_12",
+          "returned_file": "mcp-big-big-1793202708318.txt",
+          "file_tag": "CANARY_09",
+          "correct_association": false
+        },
+        {
+          "tool_use_id": "toolu_fixture_20",
+          "expected_tag": "CANARY_19",
+          "returned_file": "mcp-big-big-1793202708318.txt",
+          "file_tag": "CANARY_09",
+          "correct_association": false
+        }
+      ],
+      "association_mismatches": 4,
+      "unresolved_associations": 0,
+      "complete_association_coverage": true,
+      "analysis_note": "Windows extended-length paths used for file enumeration; missing files are unknown, not classified as a substitution.",
+      "payload_filler_chars": 60000,
+      "configured_spacing_ms": 0,
+      "payload_config_source": "deeper-count-intervention_mcp_20_1_mcp.json"
+    },
+    "over_limit_count_spaced": {
+      "count_tokens_requests": 20,
+      "fixture_count_tokens_response": 30000,
+      "fixture_env_overrides": {
+        "MAX_MCP_OUTPUT_TOKENS": null
+      },
+      "case": "mcp_1_2",
+      "binary_label": "deeper-count-spaced",
+      "exit_code": 0,
+      "timeout": false,
+      "elapsed_seconds": 2.495,
+      "api_requests": 2,
+      "fixture_tool_calls": 20,
+      "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.13.13",
+      "transport": "loopback fixture API, not a production model",
+      "stdout_sha256": "60b919babbabab3524bed04dde9071c1320a1bb0872541d994bc01a3f3e260c4",
+      "mcp_calls": 20,
+      "saved_files": 20,
+      "tools_offered": [
+        "mcp__big__big"
+      ],
+      "associations": [
+        {
+          "tool_use_id": "toolu_fixture_1",
+          "expected_tag": "CANARY_00",
+          "returned_file": "mcp-big-big-1793203889611.txt",
+          "file_tag": "CANARY_00",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_2",
+          "expected_tag": "CANARY_01",
+          "returned_file": "mcp-big-big-1793203889612.txt",
+          "file_tag": "CANARY_01",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_3",
+          "expected_tag": "CANARY_02",
+          "returned_file": "mcp-big-big-1793203889640.txt",
+          "file_tag": "CANARY_02",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_4",
+          "expected_tag": "CANARY_03",
+          "returned_file": "mcp-big-big-1793203889671.txt",
+          "file_tag": "CANARY_03",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_5",
+          "expected_tag": "CANARY_04",
+          "returned_file": "mcp-big-big-1793203889702.txt",
+          "file_tag": "CANARY_04",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_6",
+          "expected_tag": "CANARY_05",
+          "returned_file": "mcp-big-big-1793203889734.txt",
+          "file_tag": "CANARY_05",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_7",
+          "expected_tag": "CANARY_06",
+          "returned_file": "mcp-big-big-1793203889765.txt",
+          "file_tag": "CANARY_06",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_8",
+          "expected_tag": "CANARY_07",
+          "returned_file": "mcp-big-big-1793203889796.txt",
+          "file_tag": "CANARY_07",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_9",
+          "expected_tag": "CANARY_08",
+          "returned_file": "mcp-big-big-1793203889827.txt",
+          "file_tag": "CANARY_08",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_10",
+          "expected_tag": "CANARY_09",
+          "returned_file": "mcp-big-big-1793203889859.txt",
+          "file_tag": "CANARY_09",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_11",
+          "expected_tag": "CANARY_10",
+          "returned_file": "mcp-big-big-1793203889890.txt",
+          "file_tag": "CANARY_10",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_12",
+          "expected_tag": "CANARY_11",
+          "returned_file": "mcp-big-big-1793203889921.txt",
+          "file_tag": "CANARY_11",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_13",
+          "expected_tag": "CANARY_12",
+          "returned_file": "mcp-big-big-1793203889953.txt",
+          "file_tag": "CANARY_12",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_14",
+          "expected_tag": "CANARY_13",
+          "returned_file": "mcp-big-big-1793203889987.txt",
+          "file_tag": "CANARY_13",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_15",
+          "expected_tag": "CANARY_14",
+          "returned_file": "mcp-big-big-1793203890017.txt",
+          "file_tag": "CANARY_14",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_16",
+          "expected_tag": "CANARY_15",
+          "returned_file": "mcp-big-big-1793203890049.txt",
+          "file_tag": "CANARY_15",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_17",
+          "expected_tag": "CANARY_16",
+          "returned_file": "mcp-big-big-1793203890079.txt",
+          "file_tag": "CANARY_16",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_18",
+          "expected_tag": "CANARY_17",
+          "returned_file": "mcp-big-big-1793203890127.txt",
+          "file_tag": "CANARY_17",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_19",
+          "expected_tag": "CANARY_18",
+          "returned_file": "mcp-big-big-1793203890145.txt",
+          "file_tag": "CANARY_18",
+          "correct_association": true
+        },
+        {
+          "tool_use_id": "toolu_fixture_20",
+          "expected_tag": "CANARY_19",
+          "returned_file": "mcp-big-big-1793203890174.txt",
+          "file_tag": "CANARY_19",
+          "correct_association": true
+        }
+      ],
+      "association_mismatches": 0,
+      "unresolved_associations": 0,
+      "complete_association_coverage": true,
+      "analysis_note": "Windows extended-length paths used for file enumeration; missing files are unknown, not classified as a substitution.",
+      "payload_filler_chars": 60000,
+      "configured_spacing_ms": 30,
+      "payload_config_source": "deeper-count-spaced_mcp_1_2_mcp.json"
+    }
+  },
+  "token_count_caveat": "All model messages and token-count API replies are synthetic fixture inputs. The 30000 value is an intentional branch-selection intervention, not a measured production token count. The 600000-filler default run invoked no token-count API and reached timestamp storage without this intervention, but did not collide. The 60000/120000 lower-count runs used the fixture response 10 and cannot establish production default behavior.",
+  "excluded_attempts": [
+    {
+      "trial": "initial default burst",
+      "reason": "Local API connection blocked; zero requests and zero MCP calls"
+    },
+    {
+      "trial": "initial MCP Unicode run",
+      "reason": "Local API connection blocked; missing values are unknown, not transformations"
+    },
+    {
+      "trial": "first permitted MCP Unicode run",
+      "reason": "Python fixture used Windows legacy stdin encoding; non-ASCII control failed. Superseded by explicit UTF-8 fixture."
+    },
+    {
+      "trial": "initial matched spaced comparison",
+      "reason": "Local API connection blocked after temporary network permission expired"
+    }
+  ],
+  "limitations": [
+    "No real-model generation or production API token counting",
+    "No cross-user data exposure, permission bypass, adversarial exploitation or security severity established",
+    "Timing trials are not incidence estimates",
+    "No vendor fix implemented"
+  ],
+  "checks": [
+    {
+      "check": "MCP Unicode run usable",
+      "pass": true
+    },
+    {
+      "check": "Four MCP Unicode arguments rewritten",
+      "pass": true
+    },
+    {
+      "check": "MCP probe ascii received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe literal_one_slash received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe literal_two_slashes received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe actual_character received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe invalid_hex received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe nonunicode_escape received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe windows_path_guard received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe line_separator received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe escaped_backslash received",
+      "pass": true
+    },
+    {
+      "check": "MCP probe surrogate_pair received",
+      "pass": true
+    },
+    {
+      "check": "All six non-mutating controls preserved",
+      "pass": true
+    },
+    {
+      "check": "MCP received values match earlier Edit dispatched values",
+      "pass": true
+    },
+    {
+      "check": "Source semantics run usable",
+      "pass": true
+    },
+    {
+      "check": "Raw-string value changes from eight characters to three",
+      "pass": true
+    },
+    {
+      "check": "Path-comment intervention preserves the literal value",
+      "pass": true
+    },
+    {
+      "check": "Ordinary source control preserves value",
+      "pass": true
+    },
+    {
+      "check": "low_count_60000 usable",
+      "pass": true
+    },
+    {
+      "check": "low_count_60000 threshold override absent",
+      "pass": true
+    },
+    {
+      "check": "low_count_60000 path cardinality matches saved files",
+      "pass": true
+    },
+    {
+      "check": "low_count_60000 associations reconciled",
+      "pass": true
+    },
+    {
+      "check": "low_count_120000 usable",
+      "pass": true
+    },
+    {
+      "check": "low_count_120000 threshold override absent",
+      "pass": true
+    },
+    {
+      "check": "low_count_120000 path cardinality matches saved files",
+      "pass": true
+    },
+    {
+      "check": "low_count_120000 associations reconciled",
+      "pass": true
+    },
+    {
+      "check": "no_count_fastpath_600000 usable",
+      "pass": true
+    },
+    {
+      "check": "no_count_fastpath_600000 threshold override absent",
+      "pass": true
+    },
+    {
+      "check": "no_count_fastpath_600000 path cardinality matches saved files",
+      "pass": true
+    },
+    {
+      "check": "no_count_fastpath_600000 associations reconciled",
+      "pass": true
+    },
+    {
+      "check": "over_limit_count_burst usable",
+      "pass": true
+    },
+    {
+      "check": "over_limit_count_burst threshold override absent",
+      "pass": true
+    },
+    {
+      "check": "over_limit_count_burst path cardinality matches saved files",
+      "pass": true
+    },
+    {
+      "check": "over_limit_count_burst associations reconciled",
+      "pass": true
+    },
+    {
+      "check": "over_limit_count_spaced usable",
+      "pass": true
+    },
+    {
+      "check": "over_limit_count_spaced threshold override absent",
+      "pass": true
+    },
+    {
+      "check": "over_limit_count_spaced path cardinality matches saved files",
+      "pass": true
+    },
+    {
+      "check": "over_limit_count_spaced associations reconciled",
+      "pass": true
+    },
+    {
+      "check": "Low-count trials use call IDs and preserve all results",
+      "pass": true
+    },
+    {
+      "check": "Default fastpath uses timestamp files without fixture token-count calls",
+      "pass": true
+    },
+    {
+      "check": "Default fastpath preserved all ten in this run",
+      "pass": true
+    },
+    {
+      "check": "Controlled token-count signals recorded",
+      "pass": true
+    },
+    {
+      "check": "Burst has four real wrong-file associations",
+      "pass": true
+    },
+    {
+      "check": "Matched spaced control preserves twenty associations",
+      "pass": true
+    },
+    {
+      "check": "Matched timing conditions share payload size and token-count signal",
+      "pass": true
+    },
+    {
+      "check": "All valid experiments use the verified released binary",
+      "pass": true
+    }
+  ]
+}
