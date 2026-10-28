@@ -1,0 +1,272 @@
+{
+  "version": "2.1.312",
+  "runs": [
+    {
+      "run": {
+        "count_tokens_requests": 0,
+        "fixture_count_tokens_response": 10,
+        "fixture_env_overrides": {
+          "MAX_MCP_OUTPUT_TOKENS": null
+        },
+        "case": "csv_edits",
+        "binary_label": "csv-integrity-1",
+        "exit_code": 0,
+        "timeout": false,
+        "elapsed_seconds": 3.342,
+        "api_requests": 3,
+        "fixture_tool_calls": 12,
+        "workspace": "C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-1\\csv_edits\\workspace",
+        "profile": "C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-1\\csv_edits\\profile",
+        "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.13.13",
+        "transport": "loopback fixture API, not a production model",
+        "stdout_sha256": "8517350b373c9d8f07d9e519bb9085b1b1a9b1dc3a8ae9c651b55be342b00df3"
+      },
+      "rows": [
+        {
+          "case": "mixed_lf_majority",
+          "encoding": "utf-8",
+          "supplied_source": "key,value\nnote,\"alpha\r\nbeta\"\nfruit,APPLE\n",
+          "actual_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,ORANGE\n",
+          "exact_expected": false,
+          "before_note": "alpha\r\nbeta",
+          "after_note": "alpha\nbeta",
+          "unrelated_field_preserved": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_101",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-1\\csv_edits\\workspace\\mixed_lf_majority.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "6b65792c76616c75650a6e6f74652c22616c7068610d0a62657461220a66727569742c4150504c450a",
+          "after_hex": "6b65792c76616c75650a6e6f74652c22616c7068610a62657461220a66727569742c4f52414e47450a"
+        },
+        {
+          "case": "mixed_crlf_majority",
+          "encoding": "utf-8",
+          "supplied_source": "key,value\r\nnote,\"alpha\nbeta\"\r\nfruit,APPLE\r\n",
+          "actual_source": "key,value\r\nnote,\"alpha\r\nbeta\"\r\nfruit,ORANGE\r\n",
+          "exact_expected": false,
+          "before_note": "alpha\nbeta",
+          "after_note": "alpha\r\nbeta",
+          "unrelated_field_preserved": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_102",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-1\\csv_edits\\workspace\\mixed_crlf_majority.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "6b65792c76616c75650d0a6e6f74652c22616c7068610a62657461220d0a66727569742c4150504c450d0a",
+          "after_hex": "6b65792c76616c75650d0a6e6f74652c22616c7068610d0a62657461220d0a66727569742c4f52414e47450d0a"
+        },
+        {
+          "case": "uniform_lf",
+          "encoding": "utf-8",
+          "supplied_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,APPLE\n",
+          "actual_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,ORANGE\n",
+          "exact_expected": true,
+          "before_note": "alpha\nbeta",
+          "after_note": "alpha\nbeta",
+          "unrelated_field_preserved": true,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_103",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-1\\csv_edits\\workspace\\uniform_lf.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "6b65792c76616c75650a6e6f74652c22616c7068610a62657461220a66727569742c4150504c450a",
+          "after_hex": "6b65792c76616c75650a6e6f74652c22616c7068610a62657461220a66727569742c4f52414e47450a"
+        },
+        {
+          "case": "uniform_crlf",
+          "encoding": "utf-8",
+          "supplied_source": "key,value\r\nnote,\"alpha\r\nbeta\"\r\nfruit,APPLE\r\n",
+          "actual_source": "key,value\r\nnote,\"alpha\r\nbeta\"\r\nfruit,ORANGE\r\n",
+          "exact_expected": true,
+          "before_note": "alpha\r\nbeta",
+          "after_note": "alpha\r\nbeta",
+          "unrelated_field_preserved": true,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_104",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-1\\csv_edits\\workspace\\uniform_crlf.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "6b65792c76616c75650d0a6e6f74652c22616c7068610d0a62657461220d0a66727569742c4150504c450d0a",
+          "after_hex": "6b65792c76616c75650d0a6e6f74652c22616c7068610d0a62657461220d0a66727569742c4f52414e47450d0a"
+        },
+        {
+          "case": "mixed_utf16",
+          "encoding": "utf-16",
+          "supplied_source": "key,value\nnote,\"alpha\r\nbeta\"\nfruit,APPLE\n",
+          "actual_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,ORANGE\n",
+          "exact_expected": false,
+          "before_note": "alpha\r\nbeta",
+          "after_note": "alpha\nbeta",
+          "unrelated_field_preserved": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_105",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-1\\csv_edits\\workspace\\mixed_utf16.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "fffe6b00650079002c00760061006c00750065000a006e006f00740065002c00220061006c007000680061000d000a00620065007400610022000a00660072007500690074002c004100500050004c0045000a00",
+          "after_hex": "fffe6b00650079002c00760061006c00750065000a006e006f00740065002c00220061006c007000680061000a00620065007400610022000a00660072007500690074002c004f00520041004e00470045000a00"
+        },
+        {
+          "case": "mixed_utf8_bom",
+          "encoding": "utf-8-sig",
+          "supplied_source": "key,value\nnote,\"alpha\r\nbeta\"\nfruit,APPLE\n",
+          "actual_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,ORANGE\n",
+          "exact_expected": false,
+          "before_note": "alpha\r\nbeta",
+          "after_note": "alpha\nbeta",
+          "unrelated_field_preserved": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_106",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-1\\csv_edits\\workspace\\mixed_utf8_bom.csv has been updated successfully. (file state is current in your context — no need to Read it back)",
+            "cache_control": {
+              "type": "ephemeral"
+            }
+          },
+          "before_hex": "efbbbf6b65792c76616c75650a6e6f74652c22616c7068610d0a62657461220a66727569742c4150504c450a",
+          "after_hex": "efbbbf6b65792c76616c75650a6e6f74652c22616c7068610a62657461220a66727569742c4f52414e47450a"
+        }
+      ],
+      "method": "csv.reader with newline-empty StringIO preserves embedded line endings; no generated source executed"
+    },
+    {
+      "run": {
+        "count_tokens_requests": 0,
+        "fixture_count_tokens_response": 10,
+        "fixture_env_overrides": {
+          "MAX_MCP_OUTPUT_TOKENS": null
+        },
+        "case": "csv_edits",
+        "binary_label": "csv-integrity-2",
+        "exit_code": 0,
+        "timeout": false,
+        "elapsed_seconds": 4.184,
+        "api_requests": 3,
+        "fixture_tool_calls": 12,
+        "workspace": "C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-2\\csv_edits\\workspace",
+        "profile": "C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-2\\csv_edits\\profile",
+        "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.13.13",
+        "transport": "loopback fixture API, not a production model",
+        "stdout_sha256": "61aaf5c34f7133ba4b4515fc37fcfdcd69f2b0836d11782a58ab604358cdf348"
+      },
+      "rows": [
+        {
+          "case": "mixed_lf_majority",
+          "encoding": "utf-8",
+          "supplied_source": "key,value\nnote,\"alpha\r\nbeta\"\nfruit,APPLE\n",
+          "actual_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,ORANGE\n",
+          "exact_expected": false,
+          "before_note": "alpha\r\nbeta",
+          "after_note": "alpha\nbeta",
+          "unrelated_field_preserved": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_101",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-2\\csv_edits\\workspace\\mixed_lf_majority.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "6b65792c76616c75650a6e6f74652c22616c7068610d0a62657461220a66727569742c4150504c450a",
+          "after_hex": "6b65792c76616c75650a6e6f74652c22616c7068610a62657461220a66727569742c4f52414e47450a"
+        },
+        {
+          "case": "mixed_crlf_majority",
+          "encoding": "utf-8",
+          "supplied_source": "key,value\r\nnote,\"alpha\nbeta\"\r\nfruit,APPLE\r\n",
+          "actual_source": "key,value\r\nnote,\"alpha\r\nbeta\"\r\nfruit,ORANGE\r\n",
+          "exact_expected": false,
+          "before_note": "alpha\nbeta",
+          "after_note": "alpha\r\nbeta",
+          "unrelated_field_preserved": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_102",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-2\\csv_edits\\workspace\\mixed_crlf_majority.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "6b65792c76616c75650d0a6e6f74652c22616c7068610a62657461220d0a66727569742c4150504c450d0a",
+          "after_hex": "6b65792c76616c75650d0a6e6f74652c22616c7068610d0a62657461220d0a66727569742c4f52414e47450d0a"
+        },
+        {
+          "case": "uniform_lf",
+          "encoding": "utf-8",
+          "supplied_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,APPLE\n",
+          "actual_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,ORANGE\n",
+          "exact_expected": true,
+          "before_note": "alpha\nbeta",
+          "after_note": "alpha\nbeta",
+          "unrelated_field_preserved": true,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_103",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-2\\csv_edits\\workspace\\uniform_lf.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "6b65792c76616c75650a6e6f74652c22616c7068610a62657461220a66727569742c4150504c450a",
+          "after_hex": "6b65792c76616c75650a6e6f74652c22616c7068610a62657461220a66727569742c4f52414e47450a"
+        },
+        {
+          "case": "uniform_crlf",
+          "encoding": "utf-8",
+          "supplied_source": "key,value\r\nnote,\"alpha\r\nbeta\"\r\nfruit,APPLE\r\n",
+          "actual_source": "key,value\r\nnote,\"alpha\r\nbeta\"\r\nfruit,ORANGE\r\n",
+          "exact_expected": true,
+          "before_note": "alpha\r\nbeta",
+          "after_note": "alpha\r\nbeta",
+          "unrelated_field_preserved": true,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_104",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-2\\csv_edits\\workspace\\uniform_crlf.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "6b65792c76616c75650d0a6e6f74652c22616c7068610d0a62657461220d0a66727569742c4150504c450d0a",
+          "after_hex": "6b65792c76616c75650d0a6e6f74652c22616c7068610d0a62657461220d0a66727569742c4f52414e47450d0a"
+        },
+        {
+          "case": "mixed_utf16",
+          "encoding": "utf-16",
+          "supplied_source": "key,value\nnote,\"alpha\r\nbeta\"\nfruit,APPLE\n",
+          "actual_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,ORANGE\n",
+          "exact_expected": false,
+          "before_note": "alpha\r\nbeta",
+          "after_note": "alpha\nbeta",
+          "unrelated_field_preserved": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_105",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-2\\csv_edits\\workspace\\mixed_utf16.csv has been updated successfully. (file state is current in your context — no need to Read it back)"
+          },
+          "before_hex": "fffe6b00650079002c00760061006c00750065000a006e006f00740065002c00220061006c007000680061000d000a00620065007400610022000a00660072007500690074002c004100500050004c0045000a00",
+          "after_hex": "fffe6b00650079002c00760061006c00750065000a006e006f00740065002c00220061006c007000680061000a00620065007400610022000a00660072007500690074002c004f00520041004e00470045000a00"
+        },
+        {
+          "case": "mixed_utf8_bom",
+          "encoding": "utf-8-sig",
+          "supplied_source": "key,value\nnote,\"alpha\r\nbeta\"\nfruit,APPLE\n",
+          "actual_source": "key,value\nnote,\"alpha\nbeta\"\nfruit,ORANGE\n",
+          "exact_expected": false,
+          "before_note": "alpha\r\nbeta",
+          "after_note": "alpha\nbeta",
+          "unrelated_field_preserved": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_106",
+            "type": "tool_result",
+            "content": "The file C:\\Users\\mahmo\\Documents\\Codex\\2026-10-28\\i-x20-3\\work\\reproduction\\runs\\csv-integrity-2\\csv_edits\\workspace\\mixed_utf8_bom.csv has been updated successfully. (file state is current in your context — no need to Read it back)",
+            "cache_control": {
+              "type": "ephemeral"
+            }
+          },
+          "before_hex": "efbbbf6b65792c76616c75650a6e6f74652c22616c7068610d0a62657461220a66727569742c4150504c450a",
+          "after_hex": "efbbbf6b65792c76616c75650a6e6f74652c22616c7068610a62657461220a66727569742c4f52414e47450a"
+        }
+      ],
+      "method": "csv.reader with newline-empty StringIO preserves embedded line endings; no generated source executed"
+    }
+  ],
+  "excluded": [
+    "Write format trials: Write not offered; not evidence of corruption.",
+    "Default tool preflight with no API requests: excluded."
+  ],
+  "scope": "One existing defect, 12 controlled Edit cases over two independent isolated sessions. No security exploit claimed."
+}
