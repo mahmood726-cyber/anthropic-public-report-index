@@ -96,24 +96,3 @@ def run_case(binary,label,case,plan,tools='Read,Write,Edit',allowed='Read,Write,
  summary={'count_tokens_requests':len(fix.count_requests),'fixture_count_tokens_response':token_count_fixture,'fixture_env_overrides':env_overrides or {},'case':case,'binary_label':label,'exit_code':rc,'timeout':timed_out,'elapsed_seconds':round(time.monotonic()-started,3),'api_requests':len(fix.requests),'fixture_tool_calls':sum(len([x for x in stage if x['type']=='tool_use']) for stage in plan),'workspace':str(workspace),'profile':str(profile),'binary_sha256':hashlib.file_digest(open(binary,'rb'),'sha256').hexdigest(),'platform':platform.platform(),'python':sys.version.split()[0],'transport':'loopback fixture API, not a production model','stdout_sha256':hashlib.sha256(stdout.encode()).hexdigest()}
  (base/'summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
  return summary,fix,base
-def basic(binary,label):
- out=[]
- result,fix,base=run_case(binary,label,'transport_control',[])
- result['control_text_present']='Controlled fixture complete.' in (base/'stdout.jsonl').read_text(encoding='utf-8');out.append(result)
- if result['exit_code']!=0 or not result['control_text_present']:return out
- content='probe: "'+r'\uE010\uE046'+'"\n'
- # Each run gets its own predetermined workspace, and the requested file resolves under it.
- target=ROOT/'runs'/label/'unicode_write'/'workspace'/'probe.txt'
- result,fix,base=run_case(binary,label,'unicode_write',[[call('Write',{'file_path':str(target),'content':content})]])
- data=target.read_bytes() if target.exists() else None
- result.update(expected_hex=content.encode().hex(),actual_hex=data.hex() if data is not None else None,byte_exact=data==content.encode(),file_created=data is not None)
- (base/'summary.json').write_text(json.dumps(result,indent=2),encoding='utf-8');out.append(result)
- target=ROOT/'runs'/label/'unicode_edit'/'workspace'/'probe.txt'
- result,fix,base=run_case(binary,label,'unicode_edit',[[call('Read',{'file_path':str(target)})],[call('Edit',{'file_path':str(target),'old_string':'BEFORE','new_string':r'\uE010\uE046'})]],seed_files={'probe.txt':'BEFORE\n'})
- data=target.read_bytes();expected=(r'\uE010\uE046'+'\n').encode()
- result.update(expected_hex=expected.hex(),actual_hex=data.hex(),byte_exact=data==expected)
- (base/'summary.json').write_text(json.dumps(result,indent=2),encoding='utf-8');out.append(result)
- return out
-if __name__=='__main__':
- ap=argparse.ArgumentParser();ap.add_argument('--binary',type=Path,required=True);ap.add_argument('--label',required=True);args=ap.parse_args()
- print(json.dumps(basic(args.binary.resolve(),args.label),indent=2))
