@@ -2,7 +2,13 @@
 
 A source-linked, AI-assisted triage compilation of **346 existing public issue reports**, with a separate appendix of **27 resolved vendor incidents**. Source snapshot: 28 October 2026. Independent community compilation; not affiliated with or endorsed by Anthropic.
 
-**These are reporter allegations, not 346 independently verified errors or unique vulnerabilities. No runtime behavior was reproduced by this review.** Multiple cases may share a root cause. Open issue status at retrieval does not prove a failure persists in current releases. The requested target of 1,000 additional serious errors was not substantiated.
+**The original catalogue contains reporter allegations, not 346 independently verified errors or unique vulnerabilities. A controlled follow-up has now reproduced two client behaviors from that catalogue; see the evidence below.** Multiple cases may share a root cause. Open issue status at retrieval does not prove a failure persists in current releases. The requested target of 1,000 additional serious errors was not substantiated.
+
+## Controlled reproduction follow-up
+
+[Read the root-cause findings and run the reproductions](reproductions/README.md). The follow-up reproduces client-side Unicode input rewriting (#72957) and a timing-dependent saved-MCP-result identity failure (#105138), using real released binaries and local synthetic tool messages. The current tested Windows build is 2.1.312. The MCP test forces file persistence with MAX_MCP_OUTPUT_TOKENS=100; default-threshold behavior was not tested. A permission probe (#94314) remains inconclusive because its allowed-command execution control failed.
+
+The [measured results](reproductions/results.json), [filtered fixture observations](reproductions/observations.json), [62-check evidence validation](reproductions/validation.json), and runnable scripts are available. The [HTML findings report](root-cause-review.html) can be downloaded and opened locally. This is controlled client testing, not production-model generation or validation of the remaining catalogue. Earlier catalogue files are historical snapshots that predate these tests.
 
 ## Read the material
 
@@ -25,9 +31,9 @@ Counts are derived from findings.json. Every included issue links to its existin
 
 ## What this work is useful for
 
-Its practical value is consolidation: finding related cases, retaining correction notes, and choosing candidates for careful investigation. Its novelty and evidential strength are limited: the underlying reports were already public, no runtime reproduction was performed, and root-cause independence remains unresolved. It should not be used to claim 346 confirmed defects, a vendor-wide failure rate, or 1,000 serious errors.
+Its practical value is consolidation: finding related cases, retaining correction notes, and choosing candidates for careful investigation. The original catalogue has limited novelty: its underlying reports were already public. The controlled follow-up adds independent runtime evidence for two client behaviors and locates their mechanisms in the tested release; independence and current behavior of the remaining reports are unresolved. It should not be used to claim 346 confirmed defects, a vendor-wide failure rate, or 1,000 serious errors.
 
-The most valuable next step is to reproduce a small set safely on the reported and current versions, group them by demonstrated root cause, and provide minimal reproductions or new evidence to the existing upstream issues.
+Further work can extend controlled reproduction to other cases and provide minimal reproductions or new evidence to the existing upstream issues. The first follow-up preserves both failures and non-reproductions.
 
 ## Method and validation
 
