@@ -1501,5 +1501,13 @@
     "MCP timing outcomes are illustrative test runs, not production incidence estimates",
     "No vendor patch or internal source repository access",
     "No claim that the other catalogue reports have been validated"
-  ]
+  ],
+  "fixture_settings": {
+    "api_base_url": "http://127.0.0.1:8000",
+    "api_key": "synthetic fixture value, not an account credential",
+    "MAX_MCP_OUTPUT_TOKENS": 100,
+    "mcp_payload_text_characters": 2010,
+    "built_in_modes": "bare, manual permissions, no approval surface",
+    "default_MCP_threshold_tested": false
+  }
 }
