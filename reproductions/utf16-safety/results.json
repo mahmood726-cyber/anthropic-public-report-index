@@ -1,0 +1,247 @@
+{
+  "version": "2.1.312",
+  "runs": [
+    {
+      "run": {
+        "count_tokens_requests": 0,
+        "fixture_count_tokens_response": 10,
+        "fixture_env_overrides": {
+          "MAX_MCP_OUTPUT_TOKENS": null
+        },
+        "case": "malformed",
+        "binary_label": "utf16-safety-1",
+        "exit_code": 0,
+        "timeout": false,
+        "elapsed_seconds": 4.519,
+        "api_requests": 3,
+        "fixture_tool_calls": 12,
+        "workspace": "<workspace>\\work\\reproduction\\runs\\utf16-safety-1\\malformed\\workspace",
+        "profile": "<workspace>\\work\\reproduction\\runs\\utf16-safety-1\\malformed\\profile",
+        "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.13.13",
+        "transport": "loopback fixture API, not a production model",
+        "stdout_sha256": "f4101a37d319979f79839f0df37e54107a3ef58ab32f00bbe75bd0af4a92d6bf"
+      },
+      "rows": [
+        {
+          "case": "utf16_valid",
+          "before_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a00",
+          "after_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00",
+          "expected_preserving_other_bytes_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00",
+          "untouched": false,
+          "exact_expected": true,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_101",
+            "type": "tool_result",
+            "content": "The file <workspace>\\work\\reproduction\\runs\\utf16-safety-1\\malformed\\workspace\\utf16_valid.txt has been updated successfully. (file state is current in your context — no need to Read it back)"
+          }
+        },
+        {
+          "case": "utf16_odd_tail",
+          "before_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a0041",
+          "after_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00",
+          "expected_preserving_other_bytes_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a0041",
+          "untouched": false,
+          "exact_expected": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_102",
+            "type": "tool_result",
+            "content": "The file <workspace>\\work\\reproduction\\runs\\utf16-safety-1\\malformed\\workspace\\utf16_odd_tail.txt has been updated successfully. (file state is current in your context — no need to Read it back)"
+          }
+        },
+        {
+          "case": "utf16_odd_tail_ff",
+          "before_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a00ff",
+          "after_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00",
+          "expected_preserving_other_bytes_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00ff",
+          "untouched": false,
+          "exact_expected": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_103",
+            "type": "tool_result",
+            "content": "The file <workspace>\\work\\reproduction\\runs\\utf16-safety-1\\malformed\\workspace\\utf16_odd_tail_ff.txt has been updated successfully. (file state is current in your context — no need to Read it back)"
+          }
+        },
+        {
+          "case": "utf8_valid",
+          "before_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224150504c45220a",
+          "after_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224f52414e4745220a",
+          "expected_preserving_other_bytes_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224f52414e4745220a",
+          "untouched": false,
+          "exact_expected": true,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_104",
+            "type": "tool_result",
+            "content": "The file <workspace>\\work\\reproduction\\runs\\utf16-safety-1\\malformed\\workspace\\utf8_valid.txt has been updated successfully. (file state is current in your context — no need to Read it back)"
+          }
+        },
+        {
+          "case": "utf8_invalid_tail",
+          "before_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224150504c45220aff",
+          "after_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224150504c45220aff",
+          "expected_preserving_other_bytes_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224f52414e4745220aff",
+          "untouched": true,
+          "exact_expected": false,
+          "tool_result": {
+            "type": "tool_result",
+            "content": "<tool_use_error>File is not valid UTF-8: it uses a legacy encoding such as Windows-1252, Shift-JIS or GBK, or it is binary. These tools write UTF-8 (or UTF-16LE behind its byte-order mark) and never convert a file's encoding on their own, so nothing was written. If the file is text, make the change with a shell command that reads and writes it in its own encoding (iconv, or PowerShell Get-Content/Set-Content -Encoding), or ask the user whether to convert it to UTF-8 first. To replace the whole file with new UTF-8 text anyway, delete it first, then Write it.</tool_use_error>",
+            "is_error": true,
+            "tool_use_id": "toolu_fixture_105"
+          }
+        },
+        {
+          "case": "utf16be",
+          "before_hex": "feff006e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a",
+          "after_hex": "feff006e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a",
+          "expected_preserving_other_bytes_hex": "feff006e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a",
+          "untouched": true,
+          "exact_expected": false,
+          "tool_result": {
+            "type": "tool_result",
+            "content": "<tool_use_error>File is UTF-16 big-endian (it starts FE FF), which these tools cannot write. These tools write UTF-8 (or UTF-16LE behind its byte-order mark) and never convert a file's encoding on their own, so nothing was written. If the file is text, make the change with a shell command that reads and writes it in its own encoding (iconv, or PowerShell Get-Content/Set-Content -Encoding), or ask the user whether to convert it to UTF-8 first. To replace the whole file with new UTF-8 text anyway, delete it first, then Write it.</tool_use_error>",
+            "is_error": true,
+            "tool_use_id": "toolu_fixture_106",
+            "cache_control": {
+              "type": "ephemeral"
+            }
+          }
+        }
+      ],
+      "scope": "Dummy malformed UTF-16 byte strings; no production model or private files"
+    },
+    {
+      "run": {
+        "count_tokens_requests": 0,
+        "fixture_count_tokens_response": 10,
+        "fixture_env_overrides": {
+          "MAX_MCP_OUTPUT_TOKENS": null
+        },
+        "case": "malformed",
+        "binary_label": "utf16-safety-2",
+        "exit_code": 0,
+        "timeout": false,
+        "elapsed_seconds": 2.94,
+        "api_requests": 3,
+        "fixture_tool_calls": 12,
+        "workspace": "<workspace>\\work\\reproduction\\runs\\utf16-safety-2\\malformed\\workspace",
+        "profile": "<workspace>\\work\\reproduction\\runs\\utf16-safety-2\\malformed\\profile",
+        "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.13.13",
+        "transport": "loopback fixture API, not a production model",
+        "stdout_sha256": "644d50d607f603d3fe15367b1f40bcdc9a2d26573c0880220cf12edeca3f1163"
+      },
+      "rows": [
+        {
+          "case": "utf16_valid",
+          "before_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a00",
+          "after_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00",
+          "expected_preserving_other_bytes_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00",
+          "untouched": false,
+          "exact_expected": true,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_101",
+            "type": "tool_result",
+            "content": "The file <workspace>\\work\\reproduction\\runs\\utf16-safety-2\\malformed\\workspace\\utf16_valid.txt has been updated successfully. (file state is current in your context — no need to Read it back)"
+          }
+        },
+        {
+          "case": "utf16_odd_tail",
+          "before_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a0041",
+          "after_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00",
+          "expected_preserving_other_bytes_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a0041",
+          "untouched": false,
+          "exact_expected": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_102",
+            "type": "tool_result",
+            "content": "The file <workspace>\\work\\reproduction\\runs\\utf16-safety-2\\malformed\\workspace\\utf16_odd_tail.txt has been updated successfully. (file state is current in your context — no need to Read it back)"
+          }
+        },
+        {
+          "case": "utf16_odd_tail_ff",
+          "before_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a00ff",
+          "after_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00",
+          "expected_preserving_other_bytes_hex": "fffe6e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a00ff",
+          "untouched": false,
+          "exact_expected": false,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_103",
+            "type": "tool_result",
+            "content": "The file <workspace>\\work\\reproduction\\runs\\utf16-safety-2\\malformed\\workspace\\utf16_odd_tail_ff.txt has been updated successfully. (file state is current in your context — no need to Read it back)"
+          }
+        },
+        {
+          "case": "utf8_valid",
+          "before_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224150504c45220a",
+          "after_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224f52414e4745220a",
+          "expected_preserving_other_bytes_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224f52414e4745220a",
+          "untouched": false,
+          "exact_expected": true,
+          "tool_result": {
+            "tool_use_id": "toolu_fixture_104",
+            "type": "tool_result",
+            "content": "The file <workspace>\\work\\reproduction\\runs\\utf16-safety-2\\malformed\\workspace\\utf8_valid.txt has been updated successfully. (file state is current in your context — no need to Read it back)"
+          }
+        },
+        {
+          "case": "utf8_invalid_tail",
+          "before_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224150504c45220aff",
+          "after_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224150504c45220aff",
+          "expected_preserving_other_bytes_hex": "6e6f7465203d202264756d6d79220a6672756974203d20224f52414e4745220aff",
+          "untouched": true,
+          "exact_expected": false,
+          "tool_result": {
+            "type": "tool_result",
+            "content": "<tool_use_error>File is not valid UTF-8: it uses a legacy encoding such as Windows-1252, Shift-JIS or GBK, or it is binary. These tools write UTF-8 (or UTF-16LE behind its byte-order mark) and never convert a file's encoding on their own, so nothing was written. If the file is text, make the change with a shell command that reads and writes it in its own encoding (iconv, or PowerShell Get-Content/Set-Content -Encoding), or ask the user whether to convert it to UTF-8 first. To replace the whole file with new UTF-8 text anyway, delete it first, then Write it.</tool_use_error>",
+            "is_error": true,
+            "tool_use_id": "toolu_fixture_105"
+          }
+        },
+        {
+          "case": "utf16be",
+          "before_hex": "feff006e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a",
+          "after_hex": "feff006e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004100500050004c00450022000a",
+          "expected_preserving_other_bytes_hex": "feff006e006f007400650020003d0020002200640075006d006d00790022000a006600720075006900740020003d00200022004f00520041004e004700450022000a",
+          "untouched": true,
+          "exact_expected": false,
+          "tool_result": {
+            "type": "tool_result",
+            "content": "<tool_use_error>File is UTF-16 big-endian (it starts FE FF), which these tools cannot write. These tools write UTF-8 (or UTF-16LE behind its byte-order mark) and never convert a file's encoding on their own, so nothing was written. If the file is text, make the change with a shell command that reads and writes it in its own encoding (iconv, or PowerShell Get-Content/Set-Content -Encoding), or ask the user whether to convert it to UTF-8 first. To replace the whole file with new UTF-8 text anyway, delete it first, then Write it.</tool_use_error>",
+            "is_error": true,
+            "tool_use_id": "toolu_fixture_106",
+            "cache_control": {
+              "type": "ephemeral"
+            }
+          }
+        }
+      ],
+      "scope": "Dummy malformed UTF-16 byte strings; no production model or private files"
+    }
+  ],
+  "root_cause_anchors": [
+    {
+      "function": "Hxt",
+      "offset": 245645538,
+      "length": 256,
+      "sha256": "d20e81c124fb29eaec1572bc9620bcb943ebe4810b6d991400296541d308c3a9"
+    },
+    {
+      "function": "COe",
+      "offset": 245646884,
+      "length": 282,
+      "sha256": "73236261343ca7d3c0a0fbb7185a69a991f3a7da326287a0615fab87c59ff7c8"
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "candidate": "MCP success structured-content preference",
+      "reason": "Reproduced intentional behavior; maintainer explicitly confirmed design in issue 9962. Not submitted as a defect."
+    },
+    {
+      "candidate": "MCP first-text-only error handling",
+      "reason": "Not reproduced: all text diagnostics preserved in current tested release."
+    }
+  ]
+}
