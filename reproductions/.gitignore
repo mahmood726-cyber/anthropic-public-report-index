@@ -1,0 +1,4 @@
+binaries/
+runs/
+__pycache__/
+*_mcp.json
