@@ -1,0 +1,1505 @@
+{
+  "date": "2026-10-28",
+  "scope": "Controlled loopback API fixture drives real released Windows Claude Code binaries. Model generation and production API behavior are not tested.",
+  "confirmed_case_count": 2,
+  "cases": [
+    {
+      "issue": 72957,
+      "source": "https://github.com/anthropics/claude-code/issues/72957",
+      "status": "Client-side behavior reproduced; mechanism localized in tested binary",
+      "root_cause": "The input normalizer invokes a recursive Unicode repair pass after JSON parsing. Certain literal slash-u sequences are converted to codepoints before dispatch. Edit writes those already-mutated values; whole-string Windows-path and control-character guards alter which inputs are rewritten.",
+      "current": {
+        "case": "edit_boundary_controls",
+        "binary_label": "current-controlled",
+        "exit_code": 0,
+        "timeout": false,
+        "elapsed_seconds": 12.559,
+        "api_requests": 3,
+        "fixture_tool_calls": 20,
+        "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.13.13",
+        "transport": "loopback fixture API, not a production model",
+        "stdout_sha256": "1398a771f704ea95155a5946424323b3004612b779e60f8b981390922543559d",
+        "probes": [
+          {
+            "probe": "ascii",
+            "supplied_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "supplied_hex": "784179",
+            "disk_hex": "784179",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "literal_one_slash",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "supplied_hex": "785c753030343179",
+            "disk_hex": "784179",
+            "tool_input_matches_supplied": false,
+            "disk_matches_supplied": false,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "literal_two_slashes",
+            "supplied_codepoints": [
+              120,
+              92,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "supplied_hex": "785c5c753030343179",
+            "disk_hex": "785c5c753030343179",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "actual_character",
+            "supplied_codepoints": [
+              120,
+              233,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              233,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              233,
+              121
+            ],
+            "supplied_hex": "78c3a979",
+            "disk_hex": "78c3a979",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "invalid_hex",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              90,
+              90,
+              90,
+              90,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              117,
+              90,
+              90,
+              90,
+              90,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              117,
+              90,
+              90,
+              90,
+              90,
+              121
+            ],
+            "supplied_hex": "785c755a5a5a5a79",
+            "disk_hex": "785c755a5a5a5a79",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "nonunicode_escape",
+            "supplied_codepoints": [
+              120,
+              92,
+              110,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              110,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              110,
+              121
+            ],
+            "supplied_hex": "785c6e79",
+            "disk_hex": "785c6e79",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "windows_path_guard",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121,
+              32,
+              67,
+              58,
+              92,
+              102,
+              105,
+              120,
+              116,
+              117,
+              114,
+              101,
+              92,
+              100,
+              117,
+              109,
+              109,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121,
+              32,
+              67,
+              58,
+              92,
+              102,
+              105,
+              120,
+              116,
+              117,
+              114,
+              101,
+              92,
+              100,
+              117,
+              109,
+              109,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121,
+              32,
+              67,
+              58,
+              92,
+              102,
+              105,
+              120,
+              116,
+              117,
+              114,
+              101,
+              92,
+              100,
+              117,
+              109,
+              109,
+              121
+            ],
+            "supplied_hex": "785c75303034317920433a5c666978747572655c64756d6d79",
+            "disk_hex": "785c75303034317920433a5c666978747572655c64756d6d79",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "line_separator",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              50,
+              48,
+              50,
+              56,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              8232,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              8232,
+              121
+            ],
+            "supplied_hex": "785c753230323879",
+            "disk_hex": "78e280a879",
+            "tool_input_matches_supplied": false,
+            "disk_matches_supplied": false,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "escaped_backslash",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              53,
+              99,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "supplied_hex": "785c7530303563753030343179",
+            "disk_hex": "785c753030343179",
+            "tool_input_matches_supplied": false,
+            "disk_matches_supplied": false,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "surrogate_pair",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              100,
+              56,
+              51,
+              100,
+              92,
+              117,
+              100,
+              101,
+              48,
+              48,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              128512,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              128512,
+              121
+            ],
+            "supplied_hex": "785c75643833645c756465303079",
+            "disk_hex": "78f09f988079",
+            "tool_input_matches_supplied": false,
+            "disk_matches_supplied": false,
+            "disk_matches_tool_input": true
+          }
+        ]
+      },
+      "older": {
+        "case": "edit_boundary_controls",
+        "binary_label": "installed-controlled",
+        "exit_code": 0,
+        "timeout": false,
+        "elapsed_seconds": 27.559,
+        "api_requests": 3,
+        "fixture_tool_calls": 20,
+        "binary_sha256": "23dde2a47cf1d7d9c4a2d96d21fa80ea9bfc872dfde0ee06e9982d2908603350",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.13.13",
+        "transport": "loopback fixture API, not a production model",
+        "stdout_sha256": "a411327b4377d1957bd7605d3bfe7eb0e42155fca5e2a4d38a53022ec8b6f881",
+        "probes": [
+          {
+            "probe": "ascii",
+            "supplied_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "supplied_hex": "784179",
+            "disk_hex": "784179",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "literal_one_slash",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              65,
+              121
+            ],
+            "supplied_hex": "785c753030343179",
+            "disk_hex": "784179",
+            "tool_input_matches_supplied": false,
+            "disk_matches_supplied": false,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "literal_two_slashes",
+            "supplied_codepoints": [
+              120,
+              92,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "supplied_hex": "785c5c753030343179",
+            "disk_hex": "785c5c753030343179",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "actual_character",
+            "supplied_codepoints": [
+              120,
+              233,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              233,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              233,
+              121
+            ],
+            "supplied_hex": "78c3a979",
+            "disk_hex": "78c3a979",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "invalid_hex",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              90,
+              90,
+              90,
+              90,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              117,
+              90,
+              90,
+              90,
+              90,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              117,
+              90,
+              90,
+              90,
+              90,
+              121
+            ],
+            "supplied_hex": "785c755a5a5a5a79",
+            "disk_hex": "785c755a5a5a5a79",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "nonunicode_escape",
+            "supplied_codepoints": [
+              120,
+              92,
+              110,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              110,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              110,
+              121
+            ],
+            "supplied_hex": "785c6e79",
+            "disk_hex": "785c6e79",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "windows_path_guard",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121,
+              32,
+              67,
+              58,
+              92,
+              102,
+              105,
+              120,
+              116,
+              117,
+              114,
+              101,
+              92,
+              100,
+              117,
+              109,
+              109,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121,
+              32,
+              67,
+              58,
+              92,
+              102,
+              105,
+              120,
+              116,
+              117,
+              114,
+              101,
+              92,
+              100,
+              117,
+              109,
+              109,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121,
+              32,
+              67,
+              58,
+              92,
+              102,
+              105,
+              120,
+              116,
+              117,
+              114,
+              101,
+              92,
+              100,
+              117,
+              109,
+              109,
+              121
+            ],
+            "supplied_hex": "785c75303034317920433a5c666978747572655c64756d6d79",
+            "disk_hex": "785c75303034317920433a5c666978747572655c64756d6d79",
+            "tool_input_matches_supplied": true,
+            "disk_matches_supplied": true,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "line_separator",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              50,
+              48,
+              50,
+              56,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              8232,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              8232,
+              121
+            ],
+            "supplied_hex": "785c753230323879",
+            "disk_hex": "78e280a879",
+            "tool_input_matches_supplied": false,
+            "disk_matches_supplied": false,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "escaped_backslash",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              53,
+              99,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              92,
+              117,
+              48,
+              48,
+              52,
+              49,
+              121
+            ],
+            "supplied_hex": "785c7530303563753030343179",
+            "disk_hex": "785c753030343179",
+            "tool_input_matches_supplied": false,
+            "disk_matches_supplied": false,
+            "disk_matches_tool_input": true
+          },
+          {
+            "probe": "surrogate_pair",
+            "supplied_codepoints": [
+              120,
+              92,
+              117,
+              100,
+              56,
+              51,
+              100,
+              92,
+              117,
+              100,
+              101,
+              48,
+              48,
+              121
+            ],
+            "tool_input_codepoints": [
+              120,
+              128512,
+              121
+            ],
+            "disk_codepoints": [
+              120,
+              128512,
+              121
+            ],
+            "supplied_hex": "785c75643833645c756465303079",
+            "disk_hex": "78f09f988079",
+            "tool_input_matches_supplied": false,
+            "disk_matches_supplied": false,
+            "disk_matches_tool_input": true
+          }
+        ]
+      },
+      "transcript_wire_witness": []
+    },
+    {
+      "issue": 105138,
+      "source": "https://github.com/anthropics/claude-code/issues/105138",
+      "status": "Timing-dependent wrong-result association reproduced",
+      "root_cause": "Oversized MCP result filenames combine server/tool names and Date.now() without the tool-call identity. Same-millisecond calls can choose one path. The exclusive-create path treats EEXIST on a regular singly-linked file as acceptable and returns that path without validating result identity; the winning file remains and losing calls receive its contents.",
+      "burst_trials": [
+        {
+          "case": "mcp_10_1",
+          "binary_label": "current-mcp",
+          "exit_code": 0,
+          "timeout": false,
+          "elapsed_seconds": 3.654,
+          "api_requests": 2,
+          "fixture_tool_calls": 10,
+          "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "python": "3.13.13",
+          "transport": "loopback fixture API, not a production model",
+          "stdout_sha256": "c1443ad41a399f13e69212642ea2f7bdc1d7a02060c2b9066b6866ff3ecd4b8f",
+          "mcp_calls": 10,
+          "saved_files": 3,
+          "tools_offered": [
+            "mcp__big__big"
+          ],
+          "associations": [
+            {
+              "tool_use_id": "toolu_fixture_9",
+              "expected_tag": "CANARY_08",
+              "returned_file": "mcp-big-big-1793198518973.txt",
+              "file_tag": "CANARY_08",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_4",
+              "expected_tag": "CANARY_03",
+              "returned_file": "mcp-big-big-1793198518972.txt",
+              "file_tag": "CANARY_03",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_1",
+              "expected_tag": "CANARY_00",
+              "returned_file": "mcp-big-big-1793198518970.txt",
+              "file_tag": "CANARY_00",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_10",
+              "expected_tag": "CANARY_09",
+              "returned_file": "mcp-big-big-1793198518973.txt",
+              "file_tag": "CANARY_08",
+              "correct_association": false
+            },
+            {
+              "tool_use_id": "toolu_fixture_7",
+              "expected_tag": "CANARY_06",
+              "returned_file": "mcp-big-big-1793198518972.txt",
+              "file_tag": "CANARY_03",
+              "correct_association": false
+            },
+            {
+              "tool_use_id": "toolu_fixture_2",
+              "expected_tag": "CANARY_01",
+              "returned_file": "mcp-big-big-1793198518972.txt",
+              "file_tag": "CANARY_03",
+              "correct_association": false
+            },
+            {
+              "tool_use_id": "toolu_fixture_8",
+              "expected_tag": "CANARY_07",
+              "returned_file": "mcp-big-big-1793198518972.txt",
+              "file_tag": "CANARY_03",
+              "correct_association": false
+            },
+            {
+              "tool_use_id": "toolu_fixture_5",
+              "expected_tag": "CANARY_04",
+              "returned_file": "mcp-big-big-1793198518972.txt",
+              "file_tag": "CANARY_03",
+              "correct_association": false
+            },
+            {
+              "tool_use_id": "toolu_fixture_6",
+              "expected_tag": "CANARY_05",
+              "returned_file": "mcp-big-big-1793198518972.txt",
+              "file_tag": "CANARY_03",
+              "correct_association": false
+            },
+            {
+              "tool_use_id": "toolu_fixture_3",
+              "expected_tag": "CANARY_02",
+              "returned_file": "mcp-big-big-1793198518972.txt",
+              "file_tag": "CANARY_03",
+              "correct_association": false
+            }
+          ],
+          "association_mismatches": 7,
+          "complete_association_coverage": true,
+          "unresolved_associations": 0,
+          "analysis_note": "Windows extended-length paths used for file enumeration; missing files are unknown, not classified as a substitution."
+        },
+        {
+          "case": "mcp_10_2",
+          "binary_label": "current-mcp",
+          "exit_code": 0,
+          "timeout": false,
+          "elapsed_seconds": 6.043,
+          "api_requests": 2,
+          "fixture_tool_calls": 10,
+          "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "python": "3.13.13",
+          "transport": "loopback fixture API, not a production model",
+          "stdout_sha256": "572fc8cad3fff5470faad33a7f0f7e091da8baf81bf0ef6368bbf2657dabdd72",
+          "mcp_calls": 10,
+          "saved_files": 10,
+          "tools_offered": [
+            "mcp__big__big"
+          ],
+          "associations": [
+            {
+              "tool_use_id": "toolu_fixture_10",
+              "expected_tag": "CANARY_09",
+              "returned_file": "mcp-big-big-1793198649628.txt",
+              "file_tag": "CANARY_09",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_5",
+              "expected_tag": "CANARY_04",
+              "returned_file": "mcp-big-big-1793198649622.txt",
+              "file_tag": "CANARY_04",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_3",
+              "expected_tag": "CANARY_02",
+              "returned_file": "mcp-big-big-1793198649618.txt",
+              "file_tag": "CANARY_02",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_9",
+              "expected_tag": "CANARY_08",
+              "returned_file": "mcp-big-big-1793198649626.txt",
+              "file_tag": "CANARY_08",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_4",
+              "expected_tag": "CANARY_03",
+              "returned_file": "mcp-big-big-1793198649620.txt",
+              "file_tag": "CANARY_03",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_1",
+              "expected_tag": "CANARY_00",
+              "returned_file": "mcp-big-big-1793198649616.txt",
+              "file_tag": "CANARY_00",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_6",
+              "expected_tag": "CANARY_05",
+              "returned_file": "mcp-big-big-1793198649623.txt",
+              "file_tag": "CANARY_05",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_2",
+              "expected_tag": "CANARY_01",
+              "returned_file": "mcp-big-big-1793198649617.txt",
+              "file_tag": "CANARY_01",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_7",
+              "expected_tag": "CANARY_06",
+              "returned_file": "mcp-big-big-1793198649624.txt",
+              "file_tag": "CANARY_06",
+              "correct_association": true
+            },
+            {
+              "tool_use_id": "toolu_fixture_8",
+              "expected_tag": "CANARY_07",
+              "returned_file": "mcp-big-big-1793198649625.txt",
+              "file_tag": "CANARY_07",
+              "correct_association": true
+            }
+          ],
+          "association_mismatches": 0,
+          "unresolved_associations": 0,
+          "complete_association_coverage": true,
+          "analysis_note": "Windows extended-length paths used for file enumeration; missing files are unknown, not classified as a substitution."
+        }
+      ],
+      "spaced_reply_control": {
+        "case": "mcp_1_1",
+        "binary_label": "current-mcp-spaced",
+        "exit_code": 0,
+        "timeout": false,
+        "elapsed_seconds": 3.273,
+        "api_requests": 2,
+        "fixture_tool_calls": 10,
+        "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+        "platform": "Windows-11-10.0.26200-SP0",
+        "python": "3.13.13",
+        "transport": "loopback fixture API, not a production model",
+        "stdout_sha256": "bfbbb24ee97ed3feac0eb9ae21347687860c5bc66cf7368ffc9f547fc430acd5",
+        "mcp_calls": 10,
+        "saved_files": 10,
+        "tools_offered": [
+          "mcp__big__big"
+        ],
+        "associations": [
+          {
+            "tool_use_id": "toolu_fixture_2",
+            "expected_tag": "CANARY_01",
+            "returned_file": "mcp-big-big-1793198621351.txt",
+            "file_tag": "CANARY_01",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_1",
+            "expected_tag": "CANARY_00",
+            "returned_file": "mcp-big-big-1793198621350.txt",
+            "file_tag": "CANARY_00",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_3",
+            "expected_tag": "CANARY_02",
+            "returned_file": "mcp-big-big-1793198621388.txt",
+            "file_tag": "CANARY_02",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_4",
+            "expected_tag": "CANARY_03",
+            "returned_file": "mcp-big-big-1793198621413.txt",
+            "file_tag": "CANARY_03",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_5",
+            "expected_tag": "CANARY_04",
+            "returned_file": "mcp-big-big-1793198621444.txt",
+            "file_tag": "CANARY_04",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_6",
+            "expected_tag": "CANARY_05",
+            "returned_file": "mcp-big-big-1793198621478.txt",
+            "file_tag": "CANARY_05",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_7",
+            "expected_tag": "CANARY_06",
+            "returned_file": "mcp-big-big-1793198621533.txt",
+            "file_tag": "CANARY_06",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_8",
+            "expected_tag": "CANARY_07",
+            "returned_file": "mcp-big-big-1793198621548.txt",
+            "file_tag": "CANARY_07",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_9",
+            "expected_tag": "CANARY_08",
+            "returned_file": "mcp-big-big-1793198621591.txt",
+            "file_tag": "CANARY_08",
+            "correct_association": true
+          },
+          {
+            "tool_use_id": "toolu_fixture_10",
+            "expected_tag": "CANARY_09",
+            "returned_file": "mcp-big-big-1793198621623.txt",
+            "file_tag": "CANARY_09",
+            "correct_association": true
+          }
+        ],
+        "association_mismatches": 0,
+        "unresolved_associations": 0,
+        "complete_association_coverage": true,
+        "analysis_note": "Windows extended-length paths used for file enumeration; missing files are unknown, not classified as a substitution."
+      }
+    },
+    {
+      "issue": 94314,
+      "source": "https://github.com/anthropics/claude-code/issues/94314",
+      "status": "Inconclusive; positive execution control blocked",
+      "reason": "The allowed Git Bash command failed with NtCreateDirectoryObject access denied. Redirection candidates were denied, but this is not a valid confirmation of bypass resistance or a fix.",
+      "attempts": [
+        {
+          "case": "permission_allowed_prefix",
+          "binary_label": "current-permissions",
+          "exit_code": 0,
+          "timeout": false,
+          "elapsed_seconds": 4.669,
+          "api_requests": 2,
+          "fixture_tool_calls": 1,
+          "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "python": "3.13.13",
+          "transport": "loopback fixture API, not a production model",
+          "stdout_sha256": "fbe805e9940af072565c23f0440bc0cba32c8087d2a0d4d806e724ab2961263c",
+          "tools_offered": [
+            "Bash"
+          ],
+          "canary_created": false,
+          "command": "git log --oneline -1",
+          "tool_results": [
+            {
+              "type": "tool_result",
+              "content": "Exit code 66\n      0 [main] bash (356) C:\\Program Files\\Git\\bin\\..\\usr\\bin\\bash.exe: *** fatal error - NtCreateDirectoryObject(\\BaseNamedObjects\\msys-2.0S5-1888ae32e00d56aa): 0xC0000022",
+              "is_error": true,
+              "tool_use_id": "toolu_fixture_1",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        },
+        {
+          "case": "permission_standalone_write",
+          "binary_label": "current-permissions",
+          "exit_code": 0,
+          "timeout": false,
+          "elapsed_seconds": 2.821,
+          "api_requests": 2,
+          "fixture_tool_calls": 1,
+          "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "python": "3.13.13",
+          "transport": "loopback fixture API, not a production model",
+          "stdout_sha256": "35a4d16976e54ff75335e6fee830da8b9a0c975819dafed768b1661f7d504252",
+          "tools_offered": [
+            "Bash"
+          ],
+          "canary_created": false,
+          "command": "printf 'permission-fixture' > permission-canary.txt",
+          "tool_results": [
+            {
+              "type": "tool_result",
+              "content": "Permission for this tool use was denied. It requires approval, and this session has no approval surface \u2014 nobody can answer a permission prompt here \u2014 so it was denied automatically. The action was NOT performed; do not claim it succeeded, and do not retry it: this action, and anything else that requires approval, will be denied the same way for the rest of this session. Tell the user what was blocked and why you needed it, then continue with the parts of the task that do not require approval. What required approval: Output redirection to '$REPRO_ROOT\\runs\\current-permissions\\permission_standalone_write\\workspace\\permission-canary.txt' needs approval. The path is inside the working directories for this session ('$REPRO_ROOT\\runs\\current-permissions\\permission_standalone_write\\workspace'), and Claude Code asks before a shell command creates, changes or removes files there.",
+              "is_error": true,
+              "tool_use_id": "toolu_fixture_1",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        },
+        {
+          "case": "permission_semicolon_write",
+          "binary_label": "current-permissions",
+          "exit_code": 0,
+          "timeout": false,
+          "elapsed_seconds": 3.214,
+          "api_requests": 2,
+          "fixture_tool_calls": 1,
+          "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "python": "3.13.13",
+          "transport": "loopback fixture API, not a production model",
+          "stdout_sha256": "5a6bd31fe512fa0af5087a75af58d16fb53dc0b6ebffaa4fbf7f9bc87efe0a17",
+          "tools_offered": [
+            "Bash"
+          ],
+          "canary_created": false,
+          "command": "git log --oneline -1; printf 'permission-fixture' > permission-canary.txt",
+          "tool_results": [
+            {
+              "type": "tool_result",
+              "content": "Permission for this tool use was denied. It requires approval, and this session has no approval surface \u2014 nobody can answer a permission prompt here \u2014 so it was denied automatically. The action was NOT performed; do not claim it succeeded, and do not retry it: this action, and anything else that requires approval, will be denied the same way for the rest of this session. Tell the user what was blocked and why you needed it, then continue with the parts of the task that do not require approval. What required approval: Output redirection to '$REPRO_ROOT\\runs\\current-permissions\\permission_semicolon_write\\workspace\\permission-canary.txt' needs approval. The path is inside the working directories for this session ('$REPRO_ROOT\\runs\\current-permissions\\permission_semicolon_write\\workspace'), and Claude Code asks before a shell command creates, changes or removes files there.",
+              "is_error": true,
+              "tool_use_id": "toolu_fixture_1",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        },
+        {
+          "case": "permission_and_write",
+          "binary_label": "current-permissions",
+          "exit_code": 0,
+          "timeout": false,
+          "elapsed_seconds": 3.213,
+          "api_requests": 2,
+          "fixture_tool_calls": 1,
+          "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+          "platform": "Windows-11-10.0.26200-SP0",
+          "python": "3.13.13",
+          "transport": "loopback fixture API, not a production model",
+          "stdout_sha256": "50d0c485e1565a80c39e091b6977accf286e3aee1d7c6111b5b2f9b9e9765371",
+          "tools_offered": [
+            "Bash"
+          ],
+          "canary_created": false,
+          "command": "git log --oneline -1 && printf 'permission-fixture' > permission-canary.txt",
+          "tool_results": [
+            {
+              "type": "tool_result",
+              "content": "Permission for this tool use was denied. It requires approval, and this session has no approval surface \u2014 nobody can answer a permission prompt here \u2014 so it was denied automatically. The action was NOT performed; do not claim it succeeded, and do not retry it: this action, and anything else that requires approval, will be denied the same way for the rest of this session. Tell the user what was blocked and why you needed it, then continue with the parts of the task that do not require approval. What required approval: Output redirection to '$REPRO_ROOT\\runs\\current-permissions\\permission_and_write\\workspace\\permission-canary.txt' needs approval. The path is inside the working directories for this session ('$REPRO_ROOT\\runs\\current-permissions\\permission_and_write\\workspace'), and Claude Code asks before a shell command creates, changes or removes files there.",
+              "is_error": true,
+              "tool_use_id": "toolu_fixture_1",
+              "cache_control": {
+                "type": "ephemeral"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "binary_provenance": {
+    "package": "@anthropic-ai/claude-code-win32-x64",
+    "version": "2.1.312",
+    "tarball": "https://registry.npmjs.org/@anthropic-ai/claude-code-win32-x64/-/claude-code-win32-x64-2.1.312.tgz",
+    "integrity": "sha512-jBLEkokpUu+Ut0U8ZfSDudQ6m36suAqqvZat8SEYcW1KrU41i/ajeQVcqydBogpH82a0GVSJrbFkhdnmRE+32w==",
+    "integrity_verified": true,
+    "binary_sha256": "6099672ebe5dcb518b67d1d32dde1e3360bc6bee1dae7f8d28a69c49acc7c865",
+    "binary_bytes": 298690208
+  },
+  "implementation_anchors": [
+    {
+      "name": "input_normalizer",
+      "byte_offset": 256214939,
+      "window_bytes": 400,
+      "window_sha256": "7033357ce8e30e6243910e4a355ce7e45f3433e5c751bc8ee34bbb7ce8bd2c37"
+    },
+    {
+      "name": "unicode_repair",
+      "byte_offset": 256217637,
+      "window_bytes": 2200,
+      "window_sha256": "d0ab37b3872f902d283ea797fe3323a985add0a40fbfeda923eb78ba9574c9af"
+    },
+    {
+      "name": "exclusive_result_save",
+      "byte_offset": 253094636,
+      "window_bytes": 2400,
+      "window_sha256": "7886911deefe1f1869a043ca2bd29c493d331ab12bdfaa2f3a765e2aecd41317"
+    },
+    {
+      "name": "mcp_clock_filename",
+      "byte_offset": 286985584,
+      "window_bytes": 1000,
+      "window_sha256": "90ee64f9e176f0adff248d7b525852208c28941a6fe09284624011ef4b7ace38"
+    }
+  ],
+  "checks": [
+    {
+      "check": "current exited normally",
+      "pass": true
+    },
+    {
+      "check": "current captured ten controls",
+      "pass": true
+    },
+    {
+      "check": "current all disk values equal dispatched tool values",
+      "pass": true
+    },
+    {
+      "check": "current four inputs mutated",
+      "pass": true
+    },
+    {
+      "check": "current ordinary JSON preserves each supplied value",
+      "pass": true
+    },
+    {
+      "check": "current ascii probe",
+      "pass": true
+    },
+    {
+      "check": "current literal_one_slash probe",
+      "pass": true
+    },
+    {
+      "check": "current literal_two_slashes probe",
+      "pass": true
+    },
+    {
+      "check": "current actual_character probe",
+      "pass": true
+    },
+    {
+      "check": "current invalid_hex probe",
+      "pass": true
+    },
+    {
+      "check": "current nonunicode_escape probe",
+      "pass": true
+    },
+    {
+      "check": "current windows_path_guard probe",
+      "pass": true
+    },
+    {
+      "check": "current line_separator probe",
+      "pass": true
+    },
+    {
+      "check": "current escaped_backslash probe",
+      "pass": true
+    },
+    {
+      "check": "current surrogate_pair probe",
+      "pass": true
+    },
+    {
+      "check": "installed exited normally",
+      "pass": true
+    },
+    {
+      "check": "installed captured ten controls",
+      "pass": true
+    },
+    {
+      "check": "installed all disk values equal dispatched tool values",
+      "pass": true
+    },
+    {
+      "check": "installed four inputs mutated",
+      "pass": true
+    },
+    {
+      "check": "installed ordinary JSON preserves each supplied value",
+      "pass": true
+    },
+    {
+      "check": "installed ascii probe",
+      "pass": true
+    },
+    {
+      "check": "installed literal_one_slash probe",
+      "pass": true
+    },
+    {
+      "check": "installed literal_two_slashes probe",
+      "pass": true
+    },
+    {
+      "check": "installed actual_character probe",
+      "pass": true
+    },
+    {
+      "check": "installed invalid_hex probe",
+      "pass": true
+    },
+    {
+      "check": "installed nonunicode_escape probe",
+      "pass": true
+    },
+    {
+      "check": "installed windows_path_guard probe",
+      "pass": true
+    },
+    {
+      "check": "installed line_separator probe",
+      "pass": true
+    },
+    {
+      "check": "installed escaped_backslash probe",
+      "pass": true
+    },
+    {
+      "check": "installed surrogate_pair probe",
+      "pass": true
+    },
+    {
+      "check": "cross-version probe results agree",
+      "pass": true
+    },
+    {
+      "check": "fixture supplies a literal slash-u sequence",
+      "pass": true
+    },
+    {
+      "check": "SSE argument JSON parse once preserves that sequence",
+      "pass": true
+    },
+    {
+      "check": "burst1 process and association coverage valid",
+      "pass": true
+    },
+    {
+      "check": "burst1 ten real MCP calls",
+      "pass": true
+    },
+    {
+      "check": "burst1 expected call count equals tag associations",
+      "pass": true
+    },
+    {
+      "check": "burst1 distinct returned paths equal saved files",
+      "pass": true
+    },
+    {
+      "check": "burst1 mismatch calculation matches tags",
+      "pass": true
+    },
+    {
+      "check": "burst2 process and association coverage valid",
+      "pass": true
+    },
+    {
+      "check": "burst2 ten real MCP calls",
+      "pass": true
+    },
+    {
+      "check": "burst2 expected call count equals tag associations",
+      "pass": true
+    },
+    {
+      "check": "burst2 distinct returned paths equal saved files",
+      "pass": true
+    },
+    {
+      "check": "burst2 mismatch calculation matches tags",
+      "pass": true
+    },
+    {
+      "check": "spaced process and association coverage valid",
+      "pass": true
+    },
+    {
+      "check": "spaced ten real MCP calls",
+      "pass": true
+    },
+    {
+      "check": "spaced expected call count equals tag associations",
+      "pass": true
+    },
+    {
+      "check": "spaced distinct returned paths equal saved files",
+      "pass": true
+    },
+    {
+      "check": "spaced mismatch calculation matches tags",
+      "pass": true
+    },
+    {
+      "check": "one measured burst substitutes seven results",
+      "pass": true
+    },
+    {
+      "check": "second measured burst has no collision",
+      "pass": true
+    },
+    {
+      "check": "spaced control preserves all ten result identities",
+      "pass": true
+    },
+    {
+      "check": "tested binary matches integrity-checked package",
+      "pass": true
+    },
+    {
+      "check": "binary anchor input_normalizer found",
+      "pass": true
+    },
+    {
+      "check": "binary anchor unicode_repair found",
+      "pass": true
+    },
+    {
+      "check": "binary anchor exclusive_result_save found",
+      "pass": true
+    },
+    {
+      "check": "binary anchor mcp_clock_filename found",
+      "pass": true
+    },
+    {
+      "check": "save uses exclusive creation",
+      "pass": true
+    },
+    {
+      "check": "save branches on EEXIST",
+      "pass": true
+    },
+    {
+      "check": "save returns a path after collision checks",
+      "pass": true
+    },
+    {
+      "check": "input normalizer invokes Unicode repair",
+      "pass": true
+    },
+    {
+      "check": "permission positive control failed in Git Bash",
+      "pass": true
+    },
+    {
+      "check": "permission markers not created",
+      "pass": true
+    }
+  ],
+  "limitations": [
+    "Windows only; not Linux/macOS validation",
+    "Client tool handling with deterministic fixtures; no real-model generation",
+    "MCP timing outcomes are illustrative test runs, not production incidence estimates",
+    "No vendor patch or internal source repository access",
+    "No claim that the other catalogue reports have been validated"
+  ]
+}
